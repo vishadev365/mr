@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- IonIcons -->
+    <!-- date picker -->
+    <!-- dataTables -->
+
+    <!-- <link rel="stylesheet" href="assets/css/responsive.css"> -->
+</head>
+<body style="">
+<!-- <style media="screen">
+  background-image:url(animated_png_intro.png);background-size:cover;
+</style> -->
+<div style="position:fixed;top:0;left:0;right:0;bottom:0; ">
+    <img src="images/loader.gif"style="max-width:100%;height:auto"  alt="">
+    <!-- <p style="position:fixed;bottom:0;color:#fff">Developed by <br><img src="images/html.png" style="height:12px"> 365softwares </p> -->
+</div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+            //alert(ver_code);
+  $(function () {
+  setTimeout(function() {
+  var user_id = window.localStorage.getItem("user_id");
+        if (user_id == null) {
+          var t_id = window.localStorage.getItem("t_id");
+          if(t_id == null){
+          window.location.href = "logout.html";
+          }else{
+          window.location.href = "home_t.html";
+          }
+        }else{
+          window.location.href = "home.html";
+        }
+// console.log('pp');
+}, 2500);
+});
+</script>
+</body>

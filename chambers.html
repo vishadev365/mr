@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SATHI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet" />
+    <link href="css/slick-theme.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+
+<body style="background: #fff;">
+    <div class="wrapper" style="">
+      <header class="header">
+        <div class="container">
+          <div class="row" style="align-items:center">
+            <div class="col-9">
+              <div class="logo">
+                <h6>Ayushman Doctors</h6>
+              </div>
+            </div>
+            <div class="col-3" align="right">
+              <a href="account.html" style="position:relative;display:block;" class="sms_unseen back_danger"> <img src="images/menu.png" class="img-fluid" style="height:30px!important;margin:0!important;" alt=""> </a>
+            </div>
+          </div>
+        </div>
+      </header>
+        <div class="container" style="">
+          <div class="row">
+            <div class="col-12">
+              <a onclick="history.back()">  <h5 class="heading" style="color:#;font-weight:400"><img src="images/left-arrow.png" style="height: 40px;margin-right:8px;" alt="" class="img-fluid"> Chambers</h5></a>
+            </div>
+          </div>
+          
+          <div class="row" style="">
+            <div class="col-12">
+              <!-- <h5 class="heading" style="color:#00bab5;font-weight:400">Why you should use this app</h5> -->
+
+
+<!--               <div class="content_box">
+                  <div class="row" style="align-items:">
+                  <div class="col-8" style="">
+                    <h6 style="color:"> <b style="font-weight:600">Maa Tara Medicall Hall</b> </h6>
+                    <p style="margin-bottom:0;"> Collagepara, Palta, North 24 PGS (N) Kolkata- 700122, Westbengal, India </p>
+               <p style="margin-bottom:0;">+911234567890</p>
+                    <p style="margin-bottom:10px;"> 5 Years 4 Months</p>
+                    <p>Visited to <b style="color:#00abf6;font-weight:600">Dr.Anirban Das</b> </p> 
+                </div>
+                  <div class="col-4" align="center" style="padding-left:0">
+                    <button class="btn btn-primary subscribe" style="width:100%;background:#d1f0fd;color:#00abf6;border-color:#d1f0fd;">Edit</button>
+                  </div>
+                </div>
+              </div> -->
+
+        
+
+              <div class="fetch_content_box">
+                
+              </div>
+              
+
+
+
+
+            </div>
+          </div>
+
+          <!-- <button type="button" class="btn btn-primary continue_btn">Continue</button> -->
+        </div>
+
+        <nav class="footer-header" style="">
+            <!-- Left navbar links -->
+            <ul class="w-100">
+
+                <li class="">
+                    <a href="appointment.html">
+                        <div class="icon">
+                            <!-- <i class="fas fa-th-large"></i> -->
+                            <img src="images/appointment.png" style="height:30px!important;">
+                        </div>
+                        <p>Appointment</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="wallet.html">
+                        <div class="icon">
+                            <!-- <i class="fa-regular fa-circle-question"></i> -->
+                            <img src="images/qr-code.png" alt="" style="height:30px!important;">
+                            <!-- <i class="fa-solid fa-circle-question"></i> -->
+                        </div>
+                        <p>My Wallet</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="home.html">
+                        <div class="icon">
+                            <!-- <i class="fa-regular fa-circle-question"></i> -->
+                            <img src="images/home.png" alt="" style="height:30px!important;">
+                            <!-- <i class="fa-solid fa-circle-question"></i> -->
+                        </div>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="" href="chambers.html">
+                        <div class="icon">
+                            <img src="images/stethoscope.png" alt="" style="height:30px!important;">
+                        </div>
+                        <p>Chambers</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="" href="account.html">
+                        <div class="icon">
+                            <img src="images/account.png" alt="" style="height:30px!important;">
+                            <!-- <i class="fas fa-indent"></i> -->
+                        </div>
+                        <p>Account</p>
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- Right navbar links -->
+
+        </nav>
+
+    </div>
+    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="js/slick.js" type="text/javascript"></script>
+    <script>
+    $('.link').slick({
+      infinite: true,
+      slidesToShow: 2,
+      slidesToScroll: 2,
+      autoplay: false,
+      arrows: false,
+    });
+
+
+
+
+//=========================fetch chamber======================
+      var mr_id = window.localStorage.getItem("mr_id");
+
+    $.ajax({
+      // url:'mr_api/ajax_fetch_all_chamber.php',
+      url : 'https://easebizz.com/projects/ayushman_doctors/mr_API/ajax_fetch_all_chamber.php',
+
+      type:'POST',
+      data:{mr_id:mr_id},
+      dataType:'json',
+      success:function(data){
+  
+       console.log(data);
+       if (data.status == false){
+
+        }else{
+            $.each(data,function(key, value){
+
+         $('.fetch_content_box').append('<div class="content_box"><div class="row" style="align-items:"><div class="col-8" style=""><h6 style="color:"> <b style="font-weight:600">'+value.chamber_name+'</b> </h6><p style="margin-bottom:0;">'+value.address+' </p> <!-- <p style="margin-bottom:0;">+911234567890</p>               <p style="margin-bottom:10px;"> 5 Years 4 Months</p>                    <p>Visited to <b style="color:#00abf6;font-weight:600">Dr.Anirban Das</b> </p> -->                </div>              <div class="col-4" align="center" style="padding-left:0">                   <!-- <button class="btn btn-primary subscribe" data-chamber_id='+value.id+' style="width:100%;background:#d1f0fd;color:#00abf6;border-color:#d1f0fd;">Edit</button> -->                 </div>    </div>           </div>');
+     });//end-loop
+         }
+
+
+
+    }
+    });
+
+    </script>
+</body>
+
+</html>

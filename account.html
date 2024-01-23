@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SATHI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet" />
+    <link href="css/slick-theme.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+<style media="screen">
+.link a{
+  color: #00abf6;
+  border-bottom: 1px solid #00000070;
+  display: block;
+  padding: 5px 0;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 17px;
+}
+</style>
+<body style="background: #fff;">
+    <div class="wrapper" style="">
+      <header class="header">
+        <div class="container">
+          <div class="row" style="align-items:center">
+            <div class="col-12">
+
+              <div class="logo">
+                <h6>Ayushman Doctors</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <style media="screen">
+        .content_box{
+          background: #d1f0fd;
+          border: none;
+          padding: 15px;
+        }
+      </style>
+        <div class="container" style="">
+          <div class="row">
+            <div class="col-12">
+              <a onclick="history.back()">  <h5 class="heading" style="color:#;font-weight:400"><img src="images/left-arrow.png" style="height: 40px;margin-right:8px;" alt="" class="img-fluid"> Account</h5></a>
+              <div class="content_box profile_details" style="background:#00abf6;">
+                <!-- <h3 style="color:#fff;">Tehan Das</h3>
+                <p style="margin:0;color:#fff;">Phone: +911234567890</p>
+                <p style="margin:0;color:#fff;">WhatsApp: +911234567890</p> -->
+              </div>
+
+
+              <div class="link">
+
+                <a href="wallet.html">My Wallet</a>
+                <a href="help.html">Help & Support</a>
+                <a href="javascript:void(0)" class="share_btn">Share this app</a>
+                <!-- <a href="legal.html">Legal</a> -->
+                <a href="javascript:void(0)">Legal</a>
+                <a href="login.html">Logout</a>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- <button type="button" class="btn btn-primary continue_btn">Continue</button> -->
+        </div>
+
+        <nav class="footer-header" style="">
+            <!-- Left navbar links -->
+            <ul class="w-100">
+
+                <li class="">
+                    <a href="appointment.html">
+                        <div class="icon">
+                            <!-- <i class="fas fa-th-large"></i> -->
+                            <img src="images/appointment.png" style="height:30px!important;">
+                        </div>
+                        <p>Appointment</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="wallet.html">
+                        <div class="icon">
+                            <!-- <i class="fa-regular fa-circle-question"></i> -->
+                            <img src="images/qr-code.png" alt="" style="height:30px!important;">
+                            <!-- <i class="fa-solid fa-circle-question"></i> -->
+                        </div>
+                        <p>My Wallet</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="home.html">
+                        <div class="icon">
+                            <!-- <i class="fa-regular fa-circle-question"></i> -->
+                            <img src="images/home.png" alt="" style="height:30px!important;">
+                            <!-- <i class="fa-solid fa-circle-question"></i> -->
+                        </div>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="" href="chambers.html">
+                        <div class="icon">
+                            <img src="images/stethoscope.png" alt="" style="height:30px!important;">
+                        </div>
+                        <p>Chambers</p>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="" href="account.html">
+                        <div class="icon">
+                            <img src="images/account.png" alt="" style="height:30px!important;">
+                            <!-- <i class="fas fa-indent"></i> -->
+                        </div>
+                        <p>Account</p>
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- Right navbar links -->
+
+        </nav>
+    </div>
+
+    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="js/slick.js" type="text/javascript"></script>
+    <script>
+
+        //==================fetch account details================
+
+      //===============get referral id=============
+
+      var mr_id = window.localStorage.getItem("mr_id");
+
+      $.ajax({
+        // url : 'mr_api/ajax_account.php',
+       url : 'https://easebizz.com/projects/ayushman_doctors/mr_API/ajax_account.php',
+
+        type : "POST",
+        dataType : 'json',
+        data:{mr_id:mr_id},
+        success:function(res){
+
+            console.log(res);
+         
+         if(res.status=false){
+          
+         }else{
+
+            $('.profile_details').append(' <h3 style="color:#fff;">'+res.name+'</h3><p style="margin:0;color:#fff;">Phone: '+res.ph_no+'</p><p style="margin:0;color:#fff;">WhatsApp: '+res.wp_no+'</p>');
+
+         }
+         
+        }
+
+      });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // var user_id = window.localStorage.getItem("user_id");
+    // $.ajax({
+    //                url : 'https://ayushmantherapy.com/API/get_user_details.php',
+    //                type : "POST",
+    //                data:{user_id:user_id},
+    //                dataType : 'json',
+    //                success : function(data){
+    //                  if (data.status == false) {
+
+    //                  }else {
+    //                    var row = $('<h3 style="color:#fff;">'+data.name+'</h3><p style="margin:0;color:#fff;">Child name : '+data.child_name+'</p>'+
+    //                    '<p style="margin:0;color:#fff;">Date of birth: '+data.child_dob+'</p>'+
+    //                    '<p style="margin:0;color:#fff;">Phone: '+data.ph_no+'</p>'+
+    //                    '<p style="margin:0;color:#fff;">WhatsApp: '+data.wp_no+'</p>');
+    //                    // $('.profile_details').append(row);
+    //                    var address = $('<p style="margin:0;color:#000;padding-left:">'+data.address+' </p>');
+    //                    // $('.address_details').append(address);
+    //                  }
+    //                }
+    //              });
+    //              $(document).on('click','.share_btn',function () {
+    //                var text = 'https://play.google.com/store/apps/details?id=com.app.theraphy';
+    //                console.log(text);
+    //              })
+    // $('.dispute_btn').click(function () {
+    //   $('.modal').modal('show');
+    // })
+    // $('.continue_btn').click(function () {
+    //   $('.modal').modal('hide');
+    // })
+    </script>
+</body>
+
+</html>

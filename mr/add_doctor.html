@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SATHI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet" />
+    <link href="css/slick-theme.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="select2/css/select2.min.css">
+    <link rel="stylesheet" href="select2-bootstrap4-theme/select2-bootstrap4.min.css">
+</head>
+<style media="screen">
+  .form-control, .form-select{
+    font-size: 18px;
+  }
+  .selected{
+    background: #00abf6;
+    color: #fff!important;
+  }
+  .btn:focus{
+    box-shadow: none;
+  }
+</style>
+<body style="background: #fff;">
+  <div class="loader" id="loader">
+<img src="images/loading_icon_ball.gif" class="" alt="page loder">
+</div>
+    <div class="wrapper" style="">
+      <header class="header">
+        <div class="container">
+          <!-- <div class="row" style="align-items:center"> -->
+            <div class="row" style="align-items:center">
+              <div class="col-9">
+                <div class="logo">
+                  <h6>Ayushman Doctors</h6>
+                </div>
+              </div>
+              <div class="col-3" align="right">
+                <a href="account.html" style="position:relative;display:block;" class="sms_unseen back_danger"> <img src="images/menu.png" class="img-fluid" style="height:30px!important;margin:0!important;" alt=""> </a>
+              </div>
+            </div>
+          <!-- </div> -->
+        </div>
+      </header>
+      <form class="add_profile">
+        <div class="container" style="">
+          <div class="row">
+            <div class="col-12">
+              <a onclick="history.back()">  <h5 class="heading" style="color:#;font-weight:400"><img src="images/left-arrow.png" style="height: 40px;margin-right:8px;" alt="" class="img-fluid">Add Doctor</h5></a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+                <input type="text" name="name"class="form-control name" required placeholder="Doctor Name" value="">
+                <select class="form-select category" name="department" required>
+                  <option value=""> Select Department</option>
+                </select>
+                <select class="form-select category" name="department" required>
+                  <option value=""> Select Degree</option>
+                </select>
+
+                <input type="number" name="business_name" class="form-control business_name" placeholder="Fees" value="">
+              <p style="font-weight:500">Select Doctor Timing</p>
+              <p>Weekly</p>
+              <div class="week_btn week_btn_val" style="margin-bottom:15px;">
+                <button class="btn week_button " style="border:1px solid #00abf6;padding:8px 17px;font-size:16px;margin-right:2%;" value="1" type="button">1st</button>
+                <button class="btn week_button " style="border:1px solid #00abf6;padding:8px 17px;font-size:16px;margin-right:2%;" value="2" type="button">2nd</button>
+                <button class="btn week_button " style="border:1px solid #00abf6;padding:8px 17px;font-size:16px;margin-right:2%;" value="3" type="button">3rd</button>
+                <button class="btn week_button " style="border:1px solid #00abf6;padding:8px 17px;font-size:16px;margin-right:2%;" value="4" type="button">4th</button>
+              </div>
+              <div class="" align="right" style="margin-bottom:15px;">
+                <button type="button"class="btn btn-primary add_day" name="button">Add another day</button>
+              </div>
+              <div class="another_day">
+                <p>Select day & time</p>
+                <select class="form-select day" name="day[]" required>
+                  <option value=""> Select Day</option>
+                  <option value="Monday"> Monday</option>
+                  <option value="Tuesday"> Tuesday</option>
+                  <option value="Wednesday"> Wednesday</option>
+                  <option value="Thursday"> Thursday</option>
+                  <option value="Friday"> Friday</option>
+                  <option value="Saturday"> Saturday</option>
+                  <option value="Sunday"> Sunday</option>
+                </select>
+                <input type="text" name="shift_time_1[]"class="form-control" required placeholder="Morning (09 AM to 12 PM)" value="">
+                <input type="text" name="shift_time_2[]"class="form-control" required placeholder="Afternoon (12 PM to 05 PM)" value="">
+                <input type="text" name="shift_time_3[]"class="form-control" required placeholder="Evening (05 PM to 12 AM)" value="">
+                <input type="text" name="slots[]"class="form-control" required placeholder="Slots" value="">
+              </div>
+
+            </div>
+          </div>
+          <style media="screen">
+
+            .btn-check:focus+.btn-primary, .btn-primary:focus{
+              box-shadow: none!important;
+            }
+            .btn-primary:hover{
+              /* background: #fff!important;
+              border-color: #fff!important;
+              color: #00bab5!important; */
+            }
+          </style>
+          <button type="submit" class="btn btn-primary continue_btn w-100" style="padding: 13px 0;">Continue</button>
+        </div>
+
+      </form>
+    </div>
+    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="js/slick.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <script src="sweetalert2/sweetalert2.min.js"></script>
+    <script src="select2/js/select2.min.js"></script>
+    <script>
+
+    </script>
+    <script>
+      $(function () {
+
+        $(document).on('click', '.week_button', function () {
+          $(this).addClass('selected');
+        })
+        $(document).on('click', '.selected', function () {
+          $(this).removeClass('selected');
+        })
+        $(document).on('click', '.add_day', function () {
+          var row = $('<p>Select day & time</p><select class="form-select day" name="day[]" required>'+
+          '<option value=""> Select Day</option><option value="Monday"> Monday</option>'+
+          '<option value="Tuesday"> Tuesday</option><option value="Wednesday"> Wednesday</option>'+
+          '<option value="Thursday"> Thursday</option><option value="Friday"> Friday</option>'+
+          '<option value="Saturday"> Saturday</option><option value="Sunday"> Sunday</option></select>'+
+          '<input type="text" name="shift_time_1[]"class="form-control" required placeholder="Morning (09 AM to 12 PM)" value="">'+
+          '<input type="text" name="shift_time_2[]"class="form-control" required placeholder="Afternoon (12 PM to 05 PM)" value="">'+
+          '<input type="text" name="shift_time_3[]"class="form-control" required placeholder="Evening (05 PM to 12 AM)" value="">'+
+          '<input type="text" name="slots[]"class="form-control" required placeholder="Slots" value="">');
+          $('.another_day').append(row);
+        })
+        $('.loader').fadeOut('slow');
+      })
+    </script>
+
+</body>
+
+</html>

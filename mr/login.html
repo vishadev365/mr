@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SATHI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet" />
+    <link href="css/slick-theme.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="wrapper" style="padding-bottom:0;">
+        <div class="container" style="padding:0;">
+            <div class="home_page text-center justify-content-center" style="height:63vh;background:#fff;">
+                <div class="home_page_cnt align-self-center">
+
+                    <h1 style="color:#00abf6;margin-bottom:15px;">Login as Partner</h1>
+                    <p style="margin-bottom:10px">Enter your mobile phone number to <br> signup or login</p>
+                    <div class="row">
+                      <div class="col-12 text-center">
+                        <p class="err text-danger"></p>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                          <!-- <p class="err_tst text-danger"></p> -->
+                          <select class="form-select country_code" disabled style="font-size:25px" name="country_code">
+                            <!-- <option value="">+91</option> -->
+                          </select>
+                        </div>
+                        <div class="col-8" style="padding-left:0">
+                          <!-- <p class="err text-danger"></p> -->
+                          <input type="number" style="font-size:25px;text-align:center" class="form-control phone" placeholder="Enter phone number " name="" value="">
+                        </div>
+                    </div>
+                        <!-- <p>Book a doctor near you<br>& enjoy hassle free checkups</p> -->
+                  <button type="submit" class="login btn btn-primary" style="width: auto;padding: 10px 15px;margin-bottom:10px">Continue</button>
+                    <!-- <a href="login.html" style="display:block"><button class="btn btn-primary"style="margin-bottom:10px;background:transparent;color:#00bab5;width: auto;padding: 10px 15px;">Login as Therapy</button></a> -->
+                </div>
+            </div>
+            <div class="home_page text-center justify-content-center" style="height:37vh;background:#00abf6;">
+                <div class="home_page_cnt align-self-center" style="width:90%">
+
+                    <h1 style="color:#00abf6;">Therapy Calculator</h1>
+                    <br>
+                    <h1 style="color:#fff;"> <span style="font-size:17px;font-weight:400">Easy way to manage appointments</span> </h1>
+
+                    <!-- <p>Book a doctor near you<br>& enjoy hassle free checkups</p> -->
+                    <!-- <a href="login.html" style="display:block"><button class="btn btn-primary" style="width: auto;padding: 10px 15px;margin-bottom:10px">Login as Guardian</button></a>
+                    <a href="login.html" style="display:block"><button class="btn btn-primary"style="margin-bottom:10px;background:transparent;color:#00bab5;width: auto;padding: 10px 15px;">Login as Therapy</button></a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/slick.js" type="text/javascript"></script>
+    <script>
+
+        // alert('phone');
+
+    $.ajax({
+           url : "https://ayushmantherapy.com/API/country_code.php",
+           type : "POST",
+           dataType : 'json',
+           success: function(data){
+             $.each(data, function(key, value){
+               if (value.phonecode == '91') {
+                 $('.country_code').append('<option selected value="+'+value.phonecode+'">+'+value.phonecode+'</option>');
+               }else {
+                 $('.country_code').append('<option value="+'+value.phonecode+'">+'+value.phonecode+'</option>')
+               }
+
+             })
+           }});
+
+
+    //=====================login phone no===================
+    $(document).on('click', '.login', function(e){
+       e.preventDefault();
+
+
+       // window.location.href = "otp.html";
+       // return false;
+        var phone = $('.phone').val();
+        var country_code = $('.country_code').val();
+
+        var phone_no = country_code+phone;
+        var phone_no2 = phone;
+        // alert(phone_no);
+
+          if(phone == ""){
+              $('.err').html('Please enter Phone No.');
+              return false;
+          }else{
+                // ajax_https://ayushmantherapy.com/API/home_screen.php
+                $.ajax({
+                    url:'mr_api/ajax_login.php',
+                    type:'POST',
+                    data:{'country_code' : country_code,'phone' : phone,'action' : 'login'},
+                    success:function(data){
+                            
+                            // alert(data);
+                            if (data == 'exist') {
+                                 window.localStorage.setItem("ph_no", phone);
+
+                                window.location.href = "home.html";
+                            
+                            }else if(data == 'insert') {
+                                 window.localStorage.setItem("ph_no", phone);
+
+                                window.location.href = "otp.html";
+
+
+                            }else{
+                                window.location.href = "login.html";
+
+                            }
+                        //   window.localStorage.setItem("ph_no", phone);
+                        //  console.log(window.localStorage.getItem("ph_no"));
+                        //  window.localStorage.setItem("type", msg);
+                        // console.log(window.localStorage.getItem("type"));
+                        // // window.location.href = "otp.html";
+                        // $('.pp2').css('display','block');
+                        // $('.pp').css('display','none');
+                        // $.ajax({
+                        //     url:'https://medigateonline.com/erp/https://ayushmantherapy.com/API/get_otp.php',
+                        //     type:'POST',
+                        //     data:{'ph_no' : phone},
+                        //     success:function(data){
+                        //       $('.err').html('');
+                        //       // $('.otp').val(data);
+                        //
+                        //     }
+                        //   })
+                    }//success
+
+                })//end ajax
+
+            }//--chk-phone -
+
+    })//end login
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SATHI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet" />
+    <link href="css/slick-theme.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+
+<body style="background: #fff;">
+    <div class="wrapper" style="">
+      <header class="header">
+        <div class="container">
+          <div class="row" style="align-items:center">
+            <div class="col-9">
+
+              <div class="logo">
+                <h6>Ayushman Doctors</h6>
+              </div>
+            </div>
+            <div class="col-3" align="right">
+              <a href="account.html" style="position:relative;display:block;" class="sms_unseen back_danger"> <img src="images/menu.png" class="img-fluid" style="height:30px!important;margin:0!important;" alt=""> </a>
+            </div>
+          </div>
+        </div>
+      </header>
+      <style media="screen">
+        .content_box{
+          background: #d1f0fd;
+          border: none;
+          padding: 15px;
+        }
+        .btn-primary{
+          text-align: left;
+          width: 100%;
+          border-radius: 10px;
+          padding: 10px 10px;
+        }
+      </style>
+        <div class="container" style="">
+          <div class="row">
+            <div class="col-12">
+              <a onclick="history.back()">  <h5 class="heading" style="color:#;font-weight:400"><img src="images/left-arrow.png" style="height: 40px;margin-right:8px;" alt="" class="img-fluid"> Help & Support</h5></a>
+              <!-- <h5 class="heading text-center" style="color:#;font-weight:400"></h5> -->
+           <!--    <div class="row">
+                <div class="col-10" align="left">
+                  <p class="btn btn-primary" style="width:auto">Hello, <br>How can we help you today?</p>
+                </div>
+                <div class="col-2"></div>
+              </div>
+              <div class="row">
+                <div class="col-2"></div><div class="col-10" align="right"><p class="btn btn-primary" style="width:auto;background:#d1f0fd;border-color:#d1f0fd;color:#00abf6">Hlw</p></div></div> -->
+              <div class="sms_data">
+
+              </div> 
+            </div>
+            <style media="screen">
+              .continue_btn{
+                position: fixed;
+                bottom: 0;
+                border-top: 1px solid #00000070;
+              }
+            </style>
+            <div class="continue_btn">
+            <form class="help_form" id="sub_form">
+              <div class="row" style="align-items:center">
+                <div class="col-9">
+                  <input type="hidden" name="mr_id" class="mr_id" value="">
+                  <input type="text" name="sms" class="form-control sms" placeholder="Type here" style="border:none;height:50px;font-size:15px;" value="">
+                </div>
+                <div class="col-3 text-center">
+                  <button type="button" style="background:transparent;border:none;"><img src="images/send.png" class="img-fluid help_btn" alt=""></button>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- <button type="button" class="btn btn-primary continue_btn">Continue</button> -->
+        </div>
+
+
+    </div>
+
+
+    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="js/slick.js" type="text/javascript"></script>
+    <script>
+
+          var mr_id = window.localStorage.getItem("mr_id");
+    $('.mr_id').val(mr_id);
+
+      // alert(ph_no);
+ $.ajax({
+     // url : 'mr_api/ajax_fetch_mr_sms.php',
+     url : 'https://easebizz.com/projects/ayushman_doctors/mr_API/ajax_fetch_mr_sms.php',
+     type : 'POST',
+     data:{mr_id:mr_id},
+     dataType : 'json',
+     success : function(data){
+
+      // alert(res);
+      console.log(data);
+     
+     if (data.status == false){
+
+       }else{
+       $.each(data, function(key, value){
+        // alert(value.write_by);
+         if (value.write_by == 'mr') {
+           var row = $('<div class="row"><div class="col-2"></div><div class="col-10" align="right"><p class="btn btn-primary" style="width:auto;background:#d1f0fd;border-color:#d1f0fd;color:#00abf6">'+value.sms+'</p></div></div>');
+         }else {
+           var row = $('<div class="row"><div class="col-10"align="left">'+
+           '<p class="btn btn-primary" style="width:auto">'+value.sms+'</p></div>'+
+           '<div class="col-2"></div></div>');
+         }
+         $('.sms_data').append(row);
+        })//-----endloop
+
+     }
+       
+
+
+     }
+    })
+  
+
+
+
+
+
+//end swapImages
+    // var ph_no = window.localStorage.getItem("ph_no");
+    // $('.ph_no').val(ph_no);
+    // $.ajax({
+    //  url : 'mr_api/ajax_fetch_mr_sms.php',
+    //  type : "GET",
+    //  data:{ph_no:ph_no},
+    //  dataType : 'json',
+    //  success : function(data){
+    //   alert(data);
+
+    //   console.log(data);
+    //    if (data.status == false){
+
+    //    }else{
+    //    $.each(data, function(key, value){
+    //      if (value.write_by == 'mr') {
+    //        var row = $('<div class="row"><div class="col-2"></div><div class="col-10" align="right"><p class="btn btn-primary" style="width:auto;background:#d1f0fd;border-color:#d1f0fd;color:#00abf6">'+value.sms+'</p></div></div>');
+    //      }else {
+    //        var row = $('<div class="row"><div class="col-10"align="left">'+
+    //        '<p class="btn btn-primary" style="width:auto">'+value.sms+'</p></div>'+
+    //        '<div class="col-2"></div></div>');
+    //      }
+    //      $('.sms_data').append(row);
+    //     })//-----endloop
+    //    }
+    //  }
+    // })
+
+
+$('.help_btn').on('click',function(){
+
+  var sms=$('.sms').val();
+  var mr_id = window.localStorage.getItem("mr_id");
+
+
+         $.ajax({
+         // url : 'mr_api/ajax_help_form_user.php',
+         url : 'https://easebizz.com/projects/ayushman_doctors/mr_API/ajax_help_form_user.php',
+         type : "POST",
+         data:{mr_id:mr_id,sms:sms},
+         // dataType : 'json',
+         success : function(data){
+           $('.sms').val('');
+             location.reload();
+
+      
+         }
+        })
+
+});
+
+
+    // $(document).on('submit','#sub_form',function (e) {
+    //   e.preventDefault();
+
+
+    //   alert("hgdsjkfnk");
+    //     // var formData = $(this).serialize();
+    //     var formData = new FormData(this);
+    //     $.ajax({
+    //      url : 'mr_api/ajax_help_form_user.php',
+    //      type : "POST",
+    //      data:formData,
+    //      // dataType : 'json',
+    //      success : function(data){
+
+    //       alert(data);
+    //        if (data.status == false) {
+    //          swal.fire({
+    //                  position: 'top-center',
+    //                  icon: 'error',
+    //                  title: data.message,
+    //                  showConfirmButton: false,
+    //                  timer: 3000
+    //                });
+    //        }else {
+    //          location.reload();
+    //        }
+    //      }
+    //     })
+    //   })
+    $('.dispute_btn').click(function () {
+      $('.modal').modal('show');
+    })
+    $('.continue_btn').click(function () {
+      $('.modal').modal('hide');
+    })
+    </script>
+</body>
+
+</html>
